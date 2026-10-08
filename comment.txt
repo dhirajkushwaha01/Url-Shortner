@@ -1,0 +1,191 @@
+nanoid----->for the creating short ids  
+
+------------------EJS--------------------------------- 
+
+EJS (Embedded JavaScript Templates) is a template engine for Node.js and Express.js that allows us to embed JavaScript code inside HTML to create dynamic web pages.
+
+EJS ek template engine hai jo HTML ke andar JavaScript use karke dynamic HTML pages banane mein help karta hai.  
+
+------------------------------------------------------------------------
+
+                 -----> Authentication <---------
+
+Authentication is the process of verifying and confirming the identity of a user, device, or system before allowing it to access a particular application, service, or resource.
+
+Authentication generally checks “Who are you?” using credentials such as:
+
+Username & Password
+OTP
+JWT/Access Token
+Biometric data
+API Key
+
+
+User enters Email + Password
+          ↓
+      Server verifies
+          ↓
+   Credentials correct?
+      ↓           ↓
+     YES           NO
+      ↓             ↓
+   Login ✅       Reject ❌
+
+
+
+Authentication = Verifying the identity of a user before giving access.
+
+
+1. Stateful Authentication
+
+Stateful authentication me server user ke login/session ki information server-side store karta hai.
+
+Example:
+
+User Login
+   ↓
+Server verifies user
+   ↓
+Server creates Session
+   ↓
+Session stored on Server
+   ↓
+Session ID → Client
+
+Next request:
+
+Client → Session ID → Server
+                       ↓
+                Session lookup
+                       ↓
+                  User found
+                       ↓
+                    Access ✅  
+
+
+
+2. Stateless Authentication
+
+Stateless authentication me server normally login session ko store nahi karta. Authentication information token ke andar hoti hai.
+
+Example:
+
+User Login
+   ↓
+Server verifies user
+   ↓
+JWT Token
+   ↓
+Client
+
+Next request:
+
+Client → JWT → Server
+                ↓
+          Verify JWT
+                ↓
+             Access ✅
+
+Server ko generally session database me search karne ki zarurat nahi hoti. 
+
+
+
+
+1. UUID kya hai?
+
+UUID = Universally Unique Identifier
+
+UUID ek 128-bit identifier hota hai jo kisi object, user, record, resource etc. ko uniquely identify karne ke liye use kiya jata hai.
+
+
+Example: 550e8400-e29b-41d4-a716-446655440000
+
+--------------------------------------------------------------------------
+"What is JWT?"
+
+JWT stands for JSON Web Token. It is a compact, URL-safe token format commonly used for authentication and authorization. A JWT consists of a header, payload, and signature. The server signs the token using a secret or private key, and later verifies the token to validate its integrity and claims. JWTs are commonly used in APIs because authentication can be handled without maintaining traditional server-side session state.
+
+
+JWT ek token-based authentication mechanism hai jisme server user ko ek signed token deta hai. Client future requests me token send karta hai aur server signature verify karke user ko authenticate karta hai. JWT ke three parts hote hain — Header, Payload aur Signature. 
+
+
+                    Client
+                      ↓
+                   Login
+                      ↓
+                  Express
+                      ↓
+                  MongoDB
+                      ↓
+                User verified
+                      ↓
+                  JWT create
+                      ↓
+                   Client
+                      ↓
+              Authorization Header
+                      ↓
+                 Middleware
+                      ↓
+                JWT verify
+                      ↓
+                  Controller 
+
+---------------------------------------------------------------------------
+
+🍪 Cookie 
+
+A cookie is a small piece of data stored by a user's web browser on behalf of a website. It is sent between the browser and the server with applicable HTTP requests and is mainly used to remember information about a user, maintain sessions, handle authentication, store preferences, and track certain user-related state.
+
+Simple words mein:
+
+Cookie browser aur server ke beech user ki information/state ko remember karne ka ek mechanism hai. Jab server cookie set karta hai, browser usse store karta hai aur future matching requests ke saath automatically server ko bhej sakta hai.
+
+🔥 Example
+
+Maan lo tum kisi website par login karte ho:
+
+User
+ ↓
+Email + Password
+ ↓
+POST /login
+ ↓
+Backend
+ ↓
+Credentials verify
+ ↓
+Server creates session/token
+ ↓
+Set-Cookie
+ ↓
+Browser stores cookie
+
+-----------------------------------------------------------------------------
+
+ -------> Authorization <-------
+
+Authorization is the process of determining whether an authenticated user has permission or access to perform a specific action on a particular resource.
+
+Authorization ka matlab hai decide karna ki jo user already identify/authenticate ho chuka hai, usko kisi particular resource ya action ko access karne ki permission hai ya nahi.
+
+Example:
+
+User login hai
+       ↓
+Authentication ✅
+       ↓
+User ka role check karo
+       ↓
+Kya isko /admin access karne ki permission hai?
+       ↓
+YES → Allow
+NO  → Deny
+
+
+------------------------------------------------------------------------
+
+
+
+
+
